@@ -14,16 +14,18 @@ export const Container = styled.main`
 export const LoginContainer = styled.div`
   padding: 10px;
   border-radius: 20px;
+  min-height: 500px;
+  min-width: 755px;
   background: white;
   box-shadow: 0px 100px 200px 0px rgba(0, 0, 0, 0.25);
   display: flex;
-  flex-direction: column;
   gap: 2.5rem;
   justify-content: space-between;
 `;
 
 export const FormContainer = styled.div`
-  padding: 20px 40px;
+  padding: 40px 20px;
+  width: 100%;
   gap: 2rem;
   display: flex;
   max-width: 340px;
@@ -44,3 +46,17 @@ export const FormSubtitle = styled.p`
 `;
 
 export const FormContent = styled.div``;
+
+export const ImageContainer = styled.div`
+  max-width: 355px;
+  width: 100%;
+  border-radius: 20px;
+  background-color: ${({ theme }) => theme.colors.primary};
+  position: relative;
+
+  img {
+    position: absolute;
+    bottom: 0;
+    left: -50px;
+  }
+`;
