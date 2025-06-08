@@ -1,3 +1,4 @@
+import Sidebar from "@/components/menu";
 import { siteConfig } from "@/config";
 import { Providers } from "@/providers";
 import type { Metadata } from "next";
@@ -53,6 +54,7 @@ export default function RootLayout({
       </head>
 
       <body className={roboto.className}>
+        <Sidebar content={[siteConfig.menuSections]} />
         <Providers>{children}</Providers>
       </body>
     </html>
