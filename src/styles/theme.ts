@@ -2,9 +2,9 @@ import "styled-components";
 
 const theme = {
   colors: {
-    primary: "#0070f3",
-    background: "#f5f5f5",
-    text: "#333",
+    primary: "#CC6237",
+    background: "#ffffff",
+    text: { primary: "#657593" },
   },
 } as const;
 
