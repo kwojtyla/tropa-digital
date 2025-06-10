@@ -6,6 +6,14 @@ const theme = {
     background: "#ffffff",
     text: { primary: "#657593" },
   },
+  font: {
+    weight: {
+      regular: 400,
+      medium: 500,
+      semibold: 600,
+      bold: 700,
+    },
+  },
 } as const;
 
 type Theme = typeof theme;
