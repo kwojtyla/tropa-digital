@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface MenuItemProps {
+  $isSelected?: boolean;
+}
+
 export const MenuContainer = styled.nav`
   max-width: 210px;
   height: 100%;
@@ -28,23 +32,33 @@ export const MenuSection = styled.div`
 `;
 
 export const SectionTitle = styled.span`
-  font-size: 9px;
-  font-weigh: 900;
+  font-size: 10px;
+  font-weight: 700;
   color: #a3a3a3;
 `;
 
-export const MenuItem = styled.li`
+export const MenuItem = styled.li<MenuItemProps>`
   padding: 10px;
   width: 100%;
   display: flex;
+  border-radius: 5px;
   align-items: center;
   gap: 10px;
-  color: #252525;
   cursor: pointer;
+  transition: all 0.2s ease;
+
+  background-color: ${({ $isSelected }) =>
+    $isSelected ? "#cc6237" : "transparent"};
+  color: ${({ $isSelected }) => ($isSelected ? "white" : "#252525")};
 
   p {
     font-size: 14px;
     font-weight: 500;
+  }
+
+  &:hover {
+    background-color: ${({ $isSelected }) =>
+      $isSelected ? "#cc6237" : "rgba(0, 0, 0, 0.05)"};
   }
 `;
 

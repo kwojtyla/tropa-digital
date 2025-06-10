@@ -21,6 +21,11 @@ export const LoginContainer = styled.div`
   display: flex;
   gap: 2.5rem;
   justify-content: space-between;
+
+  @media (max-width: 768px) {
+    min-width: auto;
+    min-height: auto;
+  }
 `;
 
 export const FormContainer = styled.div`
@@ -32,12 +37,24 @@ export const FormContainer = styled.div`
   flex-direction: column;
 `;
 
+export const LogoContainer = styled.div`
+  @media (max-width: 768px) {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+`;
+
 export const FormHeader = styled.div``;
 
 export const FormTitle = styled.h1`
   font-weight: bold;
   font-size: 26px;
   color: ${({ theme }) => theme.colors.primary};
+
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 `;
 
 export const FormSubtitle = styled.p`
@@ -58,5 +75,9 @@ export const ImageContainer = styled.div`
     position: absolute;
     bottom: 0;
     left: -50px;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
   }
 `;

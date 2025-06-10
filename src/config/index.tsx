@@ -10,12 +10,13 @@ const createSiteConfig = () => {
   const menuSections: MenuSections = {
     title: "MENU",
     items: [
-      { name: "Dashboard", icon: <DashboardIcon /> },
-      { name: "Eventos", icon: <EventsIcon /> },
-      { name: "Equipes", icon: <TeamIcon /> },
+      { name: "Dashboard", icon: <DashboardIcon />, path: "/dashboard" },
+      { name: "Eventos", icon: <EventsIcon />, path: "/eventos" },
+      { name: "Equipes", icon: <TeamIcon />, path: "/equipes" },
       {
         name: "Inscrições",
         icon: <SubscriptionsIcon />,
+        path: "/inscricoes",
       },
     ],
   };

@@ -1,3 +1,4 @@
+import Sidebar from "@/components/menu";
 import { siteConfig } from "@/config";
 import { Providers } from "@/providers";
 import type { Metadata } from "next";
@@ -47,14 +48,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-br">
-      <head>
-        <meta name="apple-mobile-web-app-title" content="Tropa Digital" />
-      </head>
-
-      <body className={roboto.className}>
-        <Providers>{children}</Providers>
-      </body>
-    </html>
+    <>
+      <Sidebar content={[siteConfig.menuSections]} />
+      <Providers>{children}</Providers>
+    </>
   );
 }
