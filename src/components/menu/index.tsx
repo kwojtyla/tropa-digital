@@ -20,8 +20,8 @@ import { ItemMenu, MenuSections } from "./types";
 import Image from "next/image";
 import ProfileIcon from "@/assets/icons/profile";
 import LogoutIcon from "@/assets/icons/logout";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import { logoutAction } from "@/app/lib/auth-actions";
 
 interface MenuProps {
@@ -30,7 +30,15 @@ interface MenuProps {
 
 const Menu: React.FC<MenuProps> = ({ content }) => {
   const router = useRouter();
+  const pathname = usePathname();
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (pathname.includes("eventos")) setSelectedItem("Eventos");
+    else if (pathname.includes("dashboard")) setSelectedItem("Dashboard");
+    else if (pathname.includes("equipes")) setSelectedItem("Equipes");
+    else if (pathname.includes("inscricoes")) setSelectedItem("Inscrições");
+  }, [pathname]);
 
   const handleItemClick = (item: ItemMenu) => {
     router.push(item.path ?? "/");
@@ -78,6 +86,7 @@ const Menu: React.FC<MenuProps> = ({ content }) => {
             <UserRole>Administrador</UserRole>
           </UserInfo>
         </UserContainer>
+
         <MenuItem
           $isSelected={selectedItem === "profile"}
           onClick={() => console.log("Rota de Profile")}
