@@ -9,6 +9,7 @@ import {
   FormTitle,
   ImageContainer,
   LoginContainer,
+  LogoContainer,
 } from "./styles";
 import Form from "./_components/form";
 import Image from "next/image";
@@ -18,11 +19,13 @@ export default function Login() {
     <Container>
       <LoginContainer>
         <FormContainer>
-          <LogoFullIcon />
+          <LogoContainer>
+            <LogoFullIcon />
+          </LogoContainer>
           <FormHeader>
             <FormTitle>Bem-vindo de volta</FormTitle>
             <FormSubtitle>
-              Entre com sua conta para acessar o painel.
+              Entre com sua conta para acessar o painel
             </FormSubtitle>
           </FormHeader>
           <FormContent>
