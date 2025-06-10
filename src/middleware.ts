@@ -7,34 +7,38 @@ const publicRoutes = ["/login", "/register", "/forgot-password"];
 
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
-
   const sessionCookie = req.cookies.get("session");
 
   if (!sessionCookie) {
+    if (pathname === "/") {
+      return NextResponse.redirect(new URL("/login", req.url));
+    }
+
     if (!publicRoutes.includes(pathname)) {
       return NextResponse.redirect(new URL("/login", req.url));
     }
+
     return NextResponse.next();
   }
 
   const session = await decrypt(sessionCookie.value);
 
-  if (!session) {
+  if (!session || new Date() > new Date(session.expires)) {
+    if (pathname === "/") {
+      return NextResponse.redirect(new URL("/login", req.url));
+    }
+
     if (!publicRoutes.includes(pathname)) {
       const response = NextResponse.redirect(new URL("/login", req.url));
       response.cookies.set("session", "", { expires: new Date(0) });
       return response;
     }
+
     return NextResponse.next();
   }
 
-  if (new Date() > new Date(session.expires)) {
-    if (!publicRoutes.includes(pathname)) {
-      const response = NextResponse.redirect(new URL("/login", req.url));
-      response.cookies.set("session", "", { expires: new Date(0) });
-      return response;
-    }
-    return NextResponse.next();
+  if (pathname === "/") {
+    return NextResponse.redirect(new URL("/eventos", req.url));
   }
 
   if (pathname === "/login" && session.user) {
