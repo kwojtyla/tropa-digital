@@ -6,24 +6,24 @@ const key = new TextEncoder().encode(secretKey);
 const mockUsers = [
   {
     id: 1,
-    email: "admin@exemplo.com",
-    password: "123456",
-    name: "Administrador",
+    email: "kaique.steck@tropa.digital",
+    password: "teste123!",
+    name: "Kaique Steck",
     role: "admin",
   },
   {
     id: 2,
-    email: "usuario@exemplo.com",
-    password: "senha123",
-    name: "João Silva",
+    email: "teste@tropa.digital",
+    password: "teste123!",
+    name: "Usuário Teste",
     role: "user",
   },
   {
     id: 3,
-    email: "teste@teste.com",
-    password: "teste123",
-    name: "Usuário Teste",
-    role: "user",
+    email: "karol.wojtyla@tropa.digital",
+    password: "teste123!",
+    name: "Karol Wojtyla",
+    role: "employee",
   },
 ];
 
