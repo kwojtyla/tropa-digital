@@ -20,12 +20,23 @@ import { ItemMenu, MenuSections } from "./types";
 import Image from "next/image";
 import ProfileIcon from "@/assets/icons/profile";
 import LogoutIcon from "@/assets/icons/logout";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { logoutAction } from "@/app/lib/auth-actions";
 
 interface MenuProps {
   content: MenuSections[];
 }
 
 const Menu: React.FC<MenuProps> = ({ content }) => {
+  const router = useRouter();
+  const [selectedItem, setSelectedItem] = useState<string | null>(null);
+
+  const handleItemClick = (item: ItemMenu) => {
+    router.push(item.path ?? "/");
+    setSelectedItem(item.name);
+  };
+
   return (
     <MenuContainer>
       <MenuHeader>
@@ -37,7 +48,11 @@ const Menu: React.FC<MenuProps> = ({ content }) => {
           <MenuSection key={section.title}>
             <SectionTitle>{section.title}</SectionTitle>
             {section.items.map((item: ItemMenu) => (
-              <MenuItem key={item.name}>
+              <MenuItem
+                key={item.name}
+                $isSelected={selectedItem === item.name}
+                onClick={() => handleItemClick(item)}
+              >
                 {item.icon}
                 <p>{item.name}</p>
               </MenuItem>
@@ -63,11 +78,17 @@ const Menu: React.FC<MenuProps> = ({ content }) => {
             <UserRole>Administrador</UserRole>
           </UserInfo>
         </UserContainer>
-        <MenuItem>
+        <MenuItem
+          $isSelected={selectedItem === "profile"}
+          onClick={() => console.log("Rota de Profile")}
+        >
           <ProfileIcon />
           <p>Alterar dados</p>
         </MenuItem>
-        <MenuItem>
+        <MenuItem
+          $isSelected={selectedItem === "logout"}
+          onClick={() => logoutAction()}
+        >
           <LogoutIcon />
           <p>Sair</p>
         </MenuItem>
