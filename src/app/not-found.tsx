@@ -21,11 +21,25 @@ const Message = styled.div`
     font-weight: 700;
     color: ${({ theme }) => theme.colors.primary};
     margin-bottom: 16px;
+
+    @media (max-width: 768px) {
+      font-size: 64px;
+    }
   }
 
   p {
     font-size: 16px;
     color: ${({ theme }) => theme.colors.text.primary};
+
+    @media (max-width: 768px) {
+      font-size: 12px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 0 24px;
+    text-align: center;
   }
 `;
 

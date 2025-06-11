@@ -15,6 +15,7 @@ import {
   StatusDot,
   StatusCell,
   Pagination,
+  ButtonText,
 } from "./styles";
 import { ActionsIcon, PlusIcon } from "@/assets/icons";
 import Button from "@/components/button";
@@ -67,7 +68,7 @@ const Table = () => {
         />
         <Button onClick={() => console.log("Inserir novo")}>
           <PlusIcon />
-          Inserir novo
+          <ButtonText>Inserir novo</ButtonText>
         </Button>
       </SearchContainer>
 
