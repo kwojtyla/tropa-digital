@@ -38,6 +38,7 @@ export default function Login() {
             alt="Ilustração de pessoa utilizando redes sociais"
             width={355}
             height={315}
+            priority
           />
         </ImageContainer>
       </LoginContainer>
