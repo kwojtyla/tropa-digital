@@ -11,7 +11,6 @@ import {
   TableHeader,
   TableHeaderCell,
   TableRow,
-  Title,
   StatusDot,
   StatusCell,
   Pagination,
@@ -106,7 +105,7 @@ const Table = () => {
         ) : (
           <EmptyState>
             <EmptyIcon>🔍</EmptyIcon>
-            <EmptyText>Nenhum evento encontrado para "{searchTerm}"</EmptyText>
+            <EmptyText>{`Nenhum evento encontrado para "${searchTerm}"`}</EmptyText>
           </EmptyState>
         )}
       </TableContainer>

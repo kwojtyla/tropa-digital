@@ -32,7 +32,7 @@ export async function authenticateUser(email: string, password: string) {
     formData.append("email", email);
     formData.append("password", password);
 
-    const result = await login(formData);
+    // const result = await login(formData);
     return { success: true, user: loginResult.user };
   }
 

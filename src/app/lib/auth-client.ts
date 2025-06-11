@@ -40,11 +40,21 @@ export interface LoginResult {
   user?: User;
 }
 
+export interface JWTPayload {
+  user: User;
+  expires: string;
+  loginTime: string;
+  iat?: number;
+  exp?: number;
+  [key: string]: unknown;
+}
+
 function validateCredentials(email: string, password: string): User | null {
   const user = mockUsers.find(
     (u) => u.email === email && u.password === password
   );
   if (user) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { password: _, ...userWithoutPassword } = user;
     return userWithoutPassword;
   }
@@ -56,7 +66,7 @@ function isValidEmail(email: string): boolean {
   return emailRegex.test(email);
 }
 
-export async function encrypt(payload: any) {
+export async function encrypt(payload: JWTPayload): Promise<string> {
   return await new SignJWT(payload)
     .setProtectedHeader({ alg: "HS256" })
     .setIssuedAt()
@@ -64,13 +74,13 @@ export async function encrypt(payload: any) {
     .sign(key);
 }
 
-export async function decrypt(input: string): Promise<any> {
+export async function decrypt(input: string): Promise<JWTPayload | null> {
   try {
     const { payload } = await jwtVerify(input, key, {
       algorithms: ["HS256"],
     });
-    return payload;
-  } catch (error) {
+    return payload as JWTPayload;
+  } catch {
     return null;
   }
 }

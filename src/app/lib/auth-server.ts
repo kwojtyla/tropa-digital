@@ -18,7 +18,7 @@ export async function login(formData: FormData): Promise<LoginResult> {
     const expires = new Date(Date.now() + 24 * 60 * 60 * 1000);
     const session = await encrypt({
       user: loginResult.user,
-      expires,
+      expires: expires.toISOString(),
       loginTime: new Date().toISOString(),
     });
 
@@ -67,13 +67,15 @@ export async function updateSession(request: NextRequest) {
   const parsed = await decrypt(session);
   if (!parsed) return;
 
-  parsed.expires = new Date(Date.now() + 24 * 60 * 60 * 1000);
+  const newExpires = new Date(Date.now() + 24 * 60 * 60 * 1000);
+  parsed.expires = newExpires.toISOString();
+
   const res = NextResponse.next();
   res.cookies.set({
     name: "session",
     value: await encrypt(parsed),
     httpOnly: true,
-    expires: parsed.expires,
+    expires: newExpires,
     secure: process.env.NODE_ENV === "production",
     sameSite: "lax",
   });
