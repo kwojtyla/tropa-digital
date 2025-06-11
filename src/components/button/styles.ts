@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
-export const StyledButton = styled.button<{ size?: string; variant?: string }>`
+export const StyledButton = styled.button<{
+  $size?: string;
+  $variant?: string;
+}>`
   border-radius: 100px;
   border: none;
   cursor: pointer;
@@ -13,8 +16,8 @@ export const StyledButton = styled.button<{ size?: string; variant?: string }>`
   text-wrap: nowrap;
   font-weight: 400;
 
-  ${({ size }) => {
-    switch (size) {
+  ${({ $size }) => {
+    switch ($size) {
       case "small":
         return `
           padding: 6px 12px;
@@ -37,8 +40,8 @@ export const StyledButton = styled.button<{ size?: string; variant?: string }>`
         `;
     }
   }}
-  ${({ variant }) => {
-    switch (variant) {
+  ${({ $variant }) => {
+    switch ($variant) {
       case "secondary":
         return `
           background-color: #F5F5F5;
