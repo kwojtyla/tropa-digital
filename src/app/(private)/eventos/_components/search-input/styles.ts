@@ -8,6 +8,10 @@ export const InputWrapper = styled.div`
   background: #f6f6f6;
   border-radius: 100px;
   color: #c5c5c5;
+
+  @media (max-width: 540px) {
+    max-width: 100%;
+  }
 `;
 
 export const Icon = styled.div`

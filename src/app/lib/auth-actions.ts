@@ -32,6 +32,7 @@ export async function authenticateUser(email: string, password: string) {
     formData.append("email", email);
     formData.append("password", password);
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const result = await login(formData);
     return { success: true, user: loginResult.user };
   }

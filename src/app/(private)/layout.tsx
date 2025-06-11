@@ -1,10 +1,6 @@
-import Sidebar from "@/components/menu";
 import { siteConfig } from "@/config";
-import { Providers } from "@/providers";
 import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
-
-const roboto = Roboto({ subsets: ["latin"] });
+import ClientLayout from "./client-layout";
 
 export const metadata: Metadata = {
   title: {
@@ -42,15 +38,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default function PrivateLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <>
-      <Sidebar content={[siteConfig.menuSections]} />
-      <Providers>{children}</Providers>
-    </>
+    <ClientLayout menuContent={[siteConfig.menuSections]}>
+      {children}
+    </ClientLayout>
   );
 }

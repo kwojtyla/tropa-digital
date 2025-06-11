@@ -22,11 +22,19 @@ export const SearchContainer = styled.div`
   display: flex;
   gap: 10px;
   justify-content: flex-end;
+
+  @media (max-width: 540px) {
+    justify-content: space-between;
+  }
 `;
 
 export const TableContainer = styled.div`
   background: white;
   overflow: hidden;
+
+  @media (max-width: 768px) {
+    overflow: scroll;
+  }
 `;
 
 export const MainTable = styled.table`
@@ -52,6 +60,7 @@ export const TableHeaderCell = styled.th`
   color: #e5b09a;
   font-size: 14px;
   font-weight: ${({ theme }) => theme.font.weight.medium};
+  text-wrap: nowrap;
 `;
 
 export const TableCell = styled.td`
@@ -96,4 +105,16 @@ export const Pagination = styled.div`
   gap: 10px;
   align-items: center;
   justify-content: flex-end;
+
+  @media (max-width: 540px) {
+    justify-content: center;
+  }
+`;
+
+export const ButtonText = styled.p`
+  display: block;
+
+  @media (max-width: 540px) {
+    display: none;
+  }
 `;
