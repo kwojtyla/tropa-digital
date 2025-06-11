@@ -65,4 +65,4 @@ At the end, open a Pull Requestexplaining the problem solved or feature made, if
 
 ## ⚖️ License
 
-This project is licensed under the [Licença MIT](LICENSE).
+This project is licensed under the [MIT License](LICENSE).
